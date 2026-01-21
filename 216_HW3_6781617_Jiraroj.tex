@@ -93,6 +93,16 @@ Use dot product to find the angle that vector $v = -\sqrt{3} i + j$ makes with t
 \medskip
 \solution
 
+we use the relation of dot product and the angles as
+\[
+    \cos \theta = \frac{v \cdot w}{\lVert v \rVert \lVert w \rVert}
+\]
+
+\[
+    \cos \theta = \frac{-\sqrt{3} + 0}{2 \cdot 1} = \frac{-\sqrt{3}}{2}
+\]
+chucking basic angles --- in the second quadrant for negative cosine value, we'll get \boxed{\theta = \frac{5\pi}{6}}.
+
 \vspace{1em}
 \hrulefill
 
@@ -104,6 +114,72 @@ Use dot product to find the angle that vector $v = -\sqrt{3} i + j$ makes with t
 
 \medskip
 \solution
+
+\begin{enumerate}[label=(\alph*)]
+      \item if we plot those three points in 3 dimensional space (on physical paper as well) ---
+  call them $P_1$, $P_2$ and $P_3$ accordingly, we'll see that point $(2, 1, 6)$ and $(4, 7, 9)$
+  are probable of being the right angle vertex, so we'll test these two.
+
+      \begin{center}
+          \begin{tikzpicture}
+              \begin{axis}[
+                  width=6cm,
+                  height=6cm,
+                  view={60}{30},
+                  axis lines=center,
+                  axis line style={line width=0.9pt},
+                  axis on top,
+                  ticks=none,
+                  xlabel={$x$}, ylabel={$y$}, zlabel={$z$},
+                  xmin=0, xmax=12,
+                  ymin=0, ymax=12,
+                  zmin=-24, zmax=12,
+              ]
+                  \addplot3[only marks, mark=*, mark size=3pt] coordinates {(2,1,6)};
+                  \addplot3[only marks, mark=*, mark size=3pt] coordinates {(4,7,9)};
+                  \addplot3[only marks, mark=*, mark size=3pt] coordinates {(11,7,-12)};
+                  \addplot3[thick] coordinates {(2,1,6) (4,7,9)};
+                  \addplot3[thick] coordinates {(4,7,9) (11,7,-12)};
+                  \addplot3[thick] coordinates {(11,7,-12) (2,1,6)};
+                  \node[anchor=south west] at (axis cs:2,1,6) {$P_1$};
+                  \node[anchor=south east] at (axis cs:4,7,9) {$P_2$};
+                  \node[anchor=north] at (axis cs:11,7,-12) {$P_3$};
+              \end{axis}
+          \end{tikzpicture}
+      \end{center}
+
+      we test $P_1$ first, we can derive the two vectors from $P_1$ to $P_2$ and $P_3$ as
+
+      \[
+          \overrightarrow{P_1P_2} = (4, 7, 9) - (2, 1, 6) = \langle 2, 6, 3 \rangle
+      \]
+      \[
+          \overrightarrow{P_1P_3} = (11, 7, -12) - (2, 1, 6) = \langle 9, 6, -18 \rangle
+      \]
+
+      to check for right angle (orthogonal vectors), we use the dot product relation to angle as
+
+      \begin{align*}
+          \cos \frac{\pi}{2} &= \overrightarrow{P_1P_2} \cdot \overrightarrow{P_1P_3} \\
+          &= \langle 2, 6, 3 \rangle \cdot \langle 9, 6, -18 \rangle \\
+          &= 2 \cdot 9 + 6 \cdot 6 + 3 \cdot (-18) \\
+          &= 18 + 36 - 54 \\
+          &= 0
+      \end{align*}
+
+      the dot product matches the expected result when the two vector are perpendicular, so we can conclude that these three points are the vertices of a right triangle. 
+      \qed
+
+    \item since these three points formed a right triangle, finding the area is quite simple
+    \[
+        \begin{aligned}
+            \text{Area} &= \frac{1}{2} \cdot \lVert \overrightarrow{P_1P_2} \rVert \cdot \lVert \overrightarrow{P_1P_3} \rVert \\
+            &= \frac{1}{2} \cdot \sqrt{(2)^2 + (6)^2 + (3)^2} \cdot \sqrt{(9)^2 + (6)^2 + (-18)^2} \\
+            &= \frac{1}{2} \cdot 7 \cdot 21 \\
+            &= \boxed{\frac{147}{2} \text{ unit}^3}
+        \end{aligned}
+    \]
+\end{enumerate}
 
 \vspace{1em}
 \hrulefill
@@ -117,6 +193,44 @@ Given the points $P_1 = (2, 1, 6)$, $P_2 = (4, 7, 9)$, and $P_3 = (11, 7, -12)$.
 
 \medskip
 \solution
+
+\begin{enumerate}[label= (\alph*)]
+    \item we first have to find the unit vector of $\overrightarrow{P_1P_2}$ as
+    \[
+        \begin{aligned}
+            \widehat{\overrightarrow{P_1P_2}} &= \frac{\overrightarrow{P_1P_2}}{\lVert \overrightarrow{P_1P_2} \rVert} \\
+            &= \frac{\langle 4 - 2, 7 - 1, 9 - 6 \rangle}{\sqrt{(4 - 2)^2 + (7 - 1)^2 + (9 - 6)^2}} \\
+            &= \frac{\langle 2, 6, 3 \rangle}{\sqrt{(2)^2 + (6)^2 + (3)^2}} \\
+            &= \frac{1}{7} \langle 2, 6, 3 \rangle.
+        \end{aligned}
+    \]
+
+
+    a unit vector is well ... a vector with magnitude of 1; so, a vector with length 2, which has opposite direction to $\overrightarrow{P_1P_2}$ can be created by multiply $-2$ to $\widehat{\overrightarrow{P_1P_2}}$ as
+    \[
+        \boxed{-\frac{2}{7} \langle 2, 6, 3 \rangle = \left\langle -\frac{4}{7}, -\frac{12}{7}, -\frac{6}{7} \right\rangle}
+    \]
+
+    \newpage
+    \item we already find $\overrightarrow{P_1P_2}$, so we only have to find $\overrightarrow{P_1P_3}$ as
+    \[
+        \overrightarrow{P_1P_3} = (11, 7, -12) - (2, 1, 6) = \langle 9, 6, -18 \rangle
+    \]
+
+    a perpendicular vectors must have a dot product of 0, which 
+
+    \[
+        \begin{aligned}
+            \overrightarrow{P_1P_2} \cdot \overrightarrow{P_1P_3} &= \langle 2, 6, 3 \rangle \cdot \langle 9, 6, -18 \rangle \\
+            &= 2 \cdot 9 + 6 \cdot 6 + 3 \cdot (-18) \\
+            &= 18 + 36 - 54 \\
+            &= 0
+        \end{aligned}
+    \]
+
+    so, we can conclude that $\overrightarrow{P_1P_2} \text{ and } \overrightarrow{P_1P_3}$ are perpendicular. 
+    \qed
+\end{enumerate}
 
 \vspace{1em}
 \hrulefill
