@@ -360,7 +360,7 @@ write the cross product in matrix form as
       9\mathbf{i} + 9\mathbf{j} + 9\mathbf{k}
   \]
 
-  we'll get the cross product as 9\mathbf{i} + 9\mathbf{j} + 9\mathbf{k}; then to check orthogonality of the cross product to $u$ and $v$ --- we use dot product's definition of $a \cdot b = \lVert a \lVert \lVert b \lVert cos \theta \text{ ; } \theta = \pm\frac{\pi}{2}$
+  we'll get the cross product as $9\mathbf{i} + 9\mathbf{j} + 9\mathbf{k}$; then to check orthogonality of the cross product to $u$ and $v$ --- we use dot product's definition of $a \cdot b = \lVert a \rVert \lVert b \rVert \cos \theta \text{ ; } \theta = \pm\frac{\pi}{2}$
   \[
       (u \times v) \cdot u = \langle 9, 9, 9 \rangle \cdot \langle 1, 2, -3 \rangle = 9 + 18 - 27
   = 0
@@ -443,6 +443,48 @@ Determine whether the following points are co-planar: $P = (4, -3, 1)$, $Q = (6,
 
 \medskip
 \solution
+
+we first construct three vector, using $P$ as the origin:
+
+\[\overrightarrow{PQ} = \left\langle 6 - 4, -4 - 3, 7 - 1 \right\rangle = \left\langle 2, -1, 6 \right\rangle\]
+\[\overrightarrow{PR} = \left\langle 1 - 4, 2 - 3, 2 - 1 \right\rangle = \left\langle -3, -1, 1 \right\rangle\]
+\[\overrightarrow{PS} = \left\langle 0 - 4, 1 - 3, 11 - 1 \right\rangle = \left\langle -4, -2, 10 \right\rangle\]
+
+to proof whether these three vector are in the same planar, we could find an orthogonal vector of any two vector, then use it to check on the remaining one --- and the scalar projection (we don't care about the size of that last vector anyway) of the cross product and the remaining vector should be 0 (no projection). 
+
+\[
+    \overrightarrow{PQ} \times \overrightarrow{PR} =
+    \begin{vmatrix}
+        \mathbf{i} & \mathbf{j} & \mathbf{k} \\
+        2 & -1 & 6 \\
+        -3 & -1 & 1
+    \end{vmatrix}
+    =
+    \mathbf{i}\begin{vmatrix}-1 & 6 \\ -1 & 1\end{vmatrix}
+    - \mathbf{j}\begin{vmatrix}2 & 6 \\ -3 & 1\end{vmatrix}
+    + \mathbf{k}\begin{vmatrix}2 & -1 \\ -3 & -1\end{vmatrix}
+\]
+
+\[
+    =
+    \mathbf{i}((-1)(1) - 6(-1))
+    - \mathbf{j}(2 \cdot 1 - 6(-3))
+    + \mathbf{k}(2(-1) - (-1)(-3))
+    =
+    5\mathbf{i} - 20\mathbf{j} - 5\mathbf{k}
+\]
+
+then
+\[
+    (\overrightarrow{PQ} \times \overrightarrow{PR}) \cdot \overrightarrow{PS}
+    =
+    \langle 5, -20, -5 \rangle \cdot \langle -4, -2, 10 \rangle
+    = 5(-4) + (-20)(-2) + (-5)(10)
+    = -30 \neq 0.
+\]
+Therefore the points are \boxed{\text{not co-planar}}.
+\qed
+
 \vspace{1em}
 \hrulefill
 
