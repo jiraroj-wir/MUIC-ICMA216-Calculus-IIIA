@@ -270,6 +270,49 @@ Use determinant to find the cross product
 \medskip
 \solution
 
+write the cross product in matrix form as
+\[
+    \begin{pmatrix}
+        \mathbf{i} & \mathbf{j} & \mathbf{k} \\
+        1 & 0 & 0 \\
+        1 & 1 & 1
+    \end{pmatrix}
+\]
+
+then find det of it with chio's method of condensation
+
+\[
+    \frac{1}{\mathbf{i}}
+    \begin{vmatrix}
+        \mathbf{j} & \mathbf{k} \\
+        \mathbf{i} - \mathbf{j} & \mathbf{i} - \mathbf{k}
+    \end{vmatrix}
+\]
+
+\[
+    =
+    \frac{1}{\mathbf{i}}
+    \left(
+        \mathbf{j}(\mathbf{i} - \mathbf{k}) - \mathbf{k}(\mathbf{i} - \mathbf{j})
+    \right)
+    =
+    \frac{1}{\mathbf{i}}
+    \left(
+        \mathbf{j}\mathbf{i} - \mathbf{j}\mathbf{k} - \mathbf{k}\mathbf{i} + \mathbf{k}\mathbf{j}
+    \right).
+\]
+
+or using the cofactor expansion method
+
+\[
+  \mathbf{i} \cdot \det\begin{pmatrix}0&0\\1&1\end{pmatrix}
+  -\mathbf{j} \cdot \det\begin{pmatrix}1&0\\1&1\end{pmatrix}
+  +\mathbf{k} \cdot \det\begin{pmatrix}1&0\\1&1\end{pmatrix}
+  =0\mathbf{i} -\mathbf{j} + \mathbf{k}.
+\]
+
+we'll get the cross product as \boxed{\mathbf{k} - \mathbf{j}}
+
 \vspace{1em}
 \hrulefill
 
@@ -278,6 +321,55 @@ Let $u = \langle 1, 2, -3 \rangle$, $v = \langle -4, 1, 3 \rangle$. Find $u \tim
 
 \medskip
 \solution
+
+write the cross product in matrix form as
+  \[
+      \begin{vmatrix}
+          \mathbf{i} & \mathbf{j} & \mathbf{k} \\
+          1 & 2 & -3 \\
+          -4 & 1 & 3
+      \end{vmatrix}
+  \]
+
+  then find det of it with chio's method
+
+  \[
+      \mathbf{i}
+      \begin{vmatrix}
+          2 & -3 \\
+          1 & 3
+      \end{vmatrix}
+      - \mathbf{j}
+      \begin{vmatrix}
+          1 & -3 \\
+          -4 & 3
+      \end{vmatrix}
+      + \mathbf{k}
+      \begin{vmatrix}
+          1 & 2 \\
+          -4 & 1
+      \end{vmatrix}
+  \]
+
+  \[
+      =
+      \mathbf{i}(2 \cdot 3 - (-3) \cdot 1)
+      - \mathbf{j}(1 \cdot 3 - (-3)(-4))
+      + \mathbf{k}(1 \cdot 1 - 2(-4))
+      =
+      9\mathbf{i} + 9\mathbf{j} + 9\mathbf{k}
+  \]
+
+  we'll get the cross product as 9\mathbf{i} + 9\mathbf{j} + 9\mathbf{k}; then to check orthogonality of the cross product to $u$ and $v$ --- we use dot product's definition of $a \cdot b = \lVert a \lVert \lVert b \lVert cos \theta \text{ ; } \theta = \pm\frac{\pi}{2}$
+  \[
+      (u \times v) \cdot u = \langle 9, 9, 9 \rangle \cdot \langle 1, 2, -3 \rangle = 9 + 18 - 27
+  = 0
+  \]
+  \[
+      (u \times v) \cdot v = \langle 9, 9, 9 \rangle \cdot \langle -4, 1, 3 \rangle = -36 + 9 + 27
+  = 0
+  \]
+  so $u \times v$ is orthogonal to both $u$ and $v$ --- which is expected by cross product's definition. 
 
 \vspace{1em}
 \hrulefill
