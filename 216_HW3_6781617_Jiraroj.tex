@@ -383,6 +383,58 @@ Find two units vectors that are orthogonal to both
 \medskip
 \solution
 
+Personally, the first time i was able to visualize cross product is when i learned about torque in physic: imagine x-axis as rotational axis, y-axis as the force exerted, then the z-axis will be it's torque ($\boldsymbol{\tau} = \mathbf{r} \times \mathbf{F}$) --- you could check the torque direction by using the right hand rule. So, we find $u \times v$, write the cross product in matrix form as
+\[
+    \begin{vmatrix}
+        \mathbf{i} & \mathbf{j} & \mathbf{k} \\
+        -4 & 3 & 1 \\
+        2 & 0 & 4
+    \end{vmatrix}
+\]
+
+then find det of it with chio's method
+
+\[
+    \mathbf{i}
+    \begin{vmatrix}
+        3 & 1 \\
+        0 & 4
+    \end{vmatrix}
+    - \mathbf{j}
+    \begin{vmatrix}
+        -4 & 1 \\
+        2 & 4
+    \end{vmatrix}
+    + \mathbf{k}
+    \begin{vmatrix}
+        -4 & 3 \\
+        2 & 0
+    \end{vmatrix}
+\]
+
+\[
+    u \times v
+    =
+    \mathbf{i}(3 \cdot 4 - 1 \cdot 0)
+    - \mathbf{j}((-4) \cdot 4 - 1 \cdot 2)
+    + \mathbf{k}((-4) \cdot 0 - 3 \cdot 2)
+\]
+
+we'll get the cross product as \boxed{12\mathbf{i} + 18\mathbf{j} - 6\mathbf{k}}; then we just find the unit vector of $u \times v$ as 
+
+\[
+    \widehat{(u \times v)} = \frac{1}{\left\lVert 12\mathbf{i} + 18\mathbf{j} - 6\mathbf{k} \right\rVert} \cdot \langle 12, 18, -6 \rangle = \left\langle \frac{2}{\sqrt{13}}, \frac{3}{\sqrt{13}}, -\frac{1}{\sqrt{13}} \right\rangle
+\]
+
+so the two unit vectors orthogonal to both $u$ and $v$ are
+\[
+    \boxed{\left\langle \frac{2}{\sqrt{13}}, \frac{3}{\sqrt{13}}, -\frac{1}{\sqrt{13}} \right\rangle}
+    \quad \text{and it's additive inverse } \quad
+    \boxed{\left\langle -\frac{2}{\sqrt{13}}, -\frac{3}{\sqrt{13}}, \frac{1}{\sqrt{13}} \right\rangle}.
+\]
+
+
+
 \vspace{1em}
 \hrulefill
 
@@ -391,7 +443,6 @@ Determine whether the following points are co-planar: $P = (4, -3, 1)$, $Q = (6,
 
 \medskip
 \solution
-
 \vspace{1em}
 \hrulefill
 
