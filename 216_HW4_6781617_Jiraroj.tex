@@ -127,17 +127,32 @@ then, using the vector equation, the line can be written in a form of
 \hrulefill
 
 \section*{Problem 2 (11.5 Parametric Equations of Lines)}
-Find the parametric equations for the line that passes through the origin and parallel to the line\\
-$x = 2t, y = 1 - t, z = 4 + 3t$.
+Find the parametric equations for the line that passes through the origin and parallel to the line $x = 2t, y = 1 - t, z = 4 + 3t$.
 
 \medskip
 \solution
 
-\vspace{4em}
+focus on directional vector of the paralleled line $r = \langle 2t, 1-t,
+  4+3t\rangle$, $v = \langle 2, -1, 3\rangle$ --- the terms with a factor of $t$. \\
+
+  since the line passes through the origin, we set $r_0 = \langle 0, 0, 0\rangle$,
+  and we can now construct the vector equation of this line as
+
+  \[
+  \begin{aligned}
+  L: r &= \langle 0, 0, 0\rangle + t\langle 2, -1, 3\rangle \\
+  &= \langle 2t, -t, 3t\rangle
+  \end{aligned}
+  \]
+
+  and that'll be $\boxed{L: x = 2t, y = -t, z = 3t \text{ where } t \in
+  \mathbb{R}}$ for the parametric equation.
+
+\vspace{1em}
 \hrulefill
 
 \section*{Problem 3 (11.6 Planes)}
-Find the point at which the line with parametric equations $x = 2 + 3t$,\\
+Find the point at which the line with parametric equations $x = 2 + 3t$,
 $y = -4t, z = 5 + t$ intersects the plane $4x + 5y - 2z = 18$.
 
 \medskip
