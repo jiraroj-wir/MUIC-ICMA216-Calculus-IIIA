@@ -238,6 +238,94 @@ $Q = (3, -1, 6)$ and $R = (5, 2, 0)$.
 \medskip
 \solution
 
+ compute $\overrightarrow{PQ}$
+  \[
+  \begin{aligned}
+  \overrightarrow{PQ} &= (3,-1,6) - (1,3,2) \\
+  &= \langle 2,-4,4 \rangle
+  \end{aligned}
+  \]
+
+  and $\overrightarrow{PR}$
+  \[
+  \begin{aligned}
+  \overrightarrow{PR} &= (5,2,0) - (1,3,2) \\
+  &= \langle 4,-1,-2 \rangle
+  \end{aligned}
+  \]
+
+  now, we could compute the cross product of the two to get the normal vector as
+  \[
+  \begin{aligned}
+  \vec n &= \overrightarrow{PQ} \times \overrightarrow{PR} \\
+  &= \langle 2,-4,4 \rangle \times \langle 4,-1,-2 \rangle \\
+  &= \langle 12,20,14 \rangle \\
+  &= \langle 6,10,7 \rangle
+  \end{aligned}
+  \]
+
+  it should look something like this ...
+
+  \begin{center}
+  \begin{tikzpicture}
+      \begin{axis}[
+          width=8cm,
+          height=7cm,
+          view={60}{30},
+          axis lines=center,
+          axis line style={line width=0.9pt},
+          axis on top,
+          ticks=none,
+          xlabel={$x$}, ylabel={$y$}, zlabel={$z$},
+          xmin=0, xmax=6,
+          ymin=-2, ymax=8,
+          zmin=-2, zmax=7,
+      ]
+          \addplot3[
+              surf,
+              shader=flat,
+              opacity=0.25,
+              samples=11,
+              samples y=11,
+              domain=0:6,
+              y domain=-2:6,
+          ] ({x},{y},{(50 - 6*x - 10*y)/7});
+
+          \addplot3[only marks, mark=*, mark size=2.5pt]
+  coordinates {(1,3,2)};
+          \addplot3[only marks, mark=*, mark size=2.5pt]
+  coordinates {(3,-1,6)};
+          \addplot3[only marks, mark=*, mark size=2.5pt]
+  coordinates {(5,2,0)};
+
+          \addplot3[ultra thick, ->, >=stealth, color=blue]
+  coordinates {(1,3,2) (3,-1,6)};
+          \addplot3[ultra thick, ->, >=stealth, color=red]
+  coordinates {(1,3,2) (5,2,0)};
+          \addplot3[ultra thick, ->, >=stealth, color=teal]
+  coordinates {(1,3,2) (4,8,5.5)};
+
+          \node[anchor=south east] at (axis cs:1,3,2) {$P$};
+          \node[anchor=south east] at (axis cs:3,-1,6) {$Q$};
+          \node[anchor=west] at (axis cs:5,2,0) {$R$};
+          \node[anchor=west, color=teal] at (axis cs:4,8,5.5)
+  {$\vec n$};
+      \end{axis}
+  \end{tikzpicture}
+  \end{center}
+
+  we can derive the plane's equation as
+  \[
+  \begin{aligned}
+  \vec n \cdot (r - r_0) &= \langle 6,10,7 \rangle \cdot
+  (\langle x,y,z \rangle - \langle 1,3,2 \rangle) \\
+  &= 6(x - 1) + 10(y - 3) + 7(z - 2)\\
+  &= 6x - 6 + 10y -30 + 7z - 14 = 0
+  \end{aligned}
+  \]
+
+the equation of the plane is \boxed{6x + 10y + 7z = 50}.
+
 \vspace{4em}
 \hrulefill
 
