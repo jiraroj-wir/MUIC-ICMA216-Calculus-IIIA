@@ -1,0 +1,148 @@
+\documentclass{article}
+
+\usepackage{fancyhdr}
+\usepackage{amsmath}
+\allowdisplaybreaks
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{tikz}
+\usepackage[plain]{algorithm}
+\usepackage{algpseudocode}
+\usepackage{enumitem}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usepgfplotslibrary{groupplots}
+\usepackage{comment}
+
+\usetikzlibrary{automata,positioning}
+
+%
+% Basic Document Settings
+%
+
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in
+
+\linespread{1.1}
+
+\pagestyle{fancy}
+\lhead{\hmwkAuthorName}
+\chead{} % empty
+\rhead{\hmwkHeaderTitle}
+\cfoot{\thepage}
+
+\renewcommand\headrulewidth{0.4pt}
+\renewcommand\footrulewidth{0pt}
+
+\setlength\parindent{0pt}
+
+%
+% Homework Details
+%
+
+\newcommand{\hmwkTitle}{Homework 5}
+\newcommand{\hmwkDueDate}{Monday, February 9, 2026}
+\newcommand{\hmwkClass}{ICMA 216 Calculus IIIA}
+\newcommand{\hmwkClassTime}{Section 1}
+\newcommand{\hmwkClassInstructor}{Ruth J. Skulkhu}
+\newcommand{\hmwkAuthorName}{\textbf{Jiraroj Wiruchpongsanon (6781617)}}
+\newcommand{\hmwkHeaderTitle}{ICMA 216 Calculus IIIA: Homework 5}
+
+%
+% Title Page
+%
+
+\title{
+    \vspace{2in}
+    \textmd{\textbf{\hmwkClass:\ \hmwkTitle}}\\
+    \normalsize\vspace{0.1in}\small{Due\ on\ \hmwkDueDate}\\
+    \vspace{0.1in}\large{\textit{\hmwkClassInstructor\ \hmwkClassTime}}
+    \vspace{3in}
+}
+
+\author{\hmwkAuthorName}
+\date{}
+
+\renewcommand{\part}[1]{\textbf{\large Part \Alph{partCounter}}\stepcounter{partCounter}\\}
+
+%
+% Helper Commands
+%
+
+\newcounter{partCounter}
+\newcommand{\solution}{\textbf{\large Solution}}
+
+\newtheorem*{theorem}{Theorem}
+
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+
+\begin{document}
+
+\maketitle
+\newpage
+
+\section*{Problem 1 (11.7 Quadric Surfaces)}
+Sketch the following surfaces.
+\begin{enumerate}[label=(\alph*)]
+    \item $-9z^2 - 5y^2 - x + 4 = 0$
+    \item $4y^2 + 9z^2 - x^2 = 0$
+    \item $1 - 3z^2 - y^2 - 4x^2 = 0$
+\end{enumerate}
+
+\medskip
+\solution
+
+\vspace{1em}
+\hrulefill
+
+\section*{Problem 2 (12.1 Vector Functions and Space Curves)}
+Sketch the following curves.
+\begin{enumerate}[label=(\alph*)]
+    \item $r = (1 - t)(i + j) + t(i - j); 0 \le t \le 1$
+    \item $r(t) = \langle t^4 + 1, t \rangle.$
+\end{enumerate}
+
+\medskip
+\solution
+
+\vspace{1em}
+\hrulefill
+
+\newpage
+\section*{Problem 3 (12.2 Calculus of Vector Functions)}
+Given $r(t) = (1 + t)i + t^2 j$. Find the unit tangent vector at the point where $t = 1$.
+
+\medskip
+\solution
+
+\vspace{1em}
+\hrulefill
+
+\section*{Problem 4 (12.2 Calculus of Vector Functions)}
+Evaluate the integral
+\[
+    \int (e^t i + 2t j + \ln t k) \, dt.
+\]
+
+\medskip
+\solution
+
+\vspace{1em}
+\hrulefill
+
+\section*{Problem 5 (12.2 Calculus of Vector Functions)}
+Find $r(t)$ if $r'(t) = t^2 i + 4t^3 j - t^2 k$ and $r(0) = k$.
+
+\medskip
+\solution
+
+\vspace{1em}
+\hrulefill
+
+\end{document}
