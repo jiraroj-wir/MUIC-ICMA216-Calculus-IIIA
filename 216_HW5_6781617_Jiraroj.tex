@@ -98,6 +98,61 @@ Sketch the following surfaces.
 \medskip
 \solution
 
+\begin{center}
+\begin{tikzpicture}
+    \begin{groupplot}[
+        group style={group size=3 by 1, horizontal sep=2cm},
+        width=6cm, height=6.2cm,
+        view={60}{30},
+        axis lines=center,
+        axis line style={line width=0.9pt},
+        axis on top,
+        ticks=none,
+        xlabel={$x$}, ylabel={$y$}, zlabel={$z$},
+        colormap/viridis,
+    ]
+        \nextgroupplot[
+            title={(a)\ $x = 4 - 5y^{2} - 9z^{2}$},
+            xmin=-6, xmax=6,
+            ymin=-1.5, ymax=1.5,
+            zmin=-1.5, zmax=1.5,
+        ]
+            \addplot3[
+                surf, shader=interp, opacity=0.9,
+                domain=-1:1,
+                y domain=-1:1,
+                samples=50, samples y=50
+            ] ({4 - 5*x^2 - 9*y^2},{x},{y});
+
+        \nextgroupplot[
+            title={(b)\ $x^{2} = 4y^{2} + 9z^{2}$},
+            xmin=-4, xmax=4,
+            ymin=-2.5, ymax=2.5,
+            zmin=-2.5, zmax=2.5,
+        ]
+            \addplot3[
+                surf, shader=interp, opacity=0.88,
+                domain=0:2*pi,
+                y domain=-3:3,
+                samples=70, samples y=36
+            ] ({y},{abs(y)/2*cos(deg(x))},{abs(y)/3*sin(deg(x))});
+
+        \nextgroupplot[
+            title={(c)\ $4x^{2} + y^{2} + 3z^{2} = 1$},
+            xmin=-1.2, xmax=1.2,
+            ymin=-1.2, ymax=1.2,
+            zmin=-1.2, zmax=1.2,
+        ]
+            \addplot3[
+                surf, shader=interp, opacity=0.9,
+                domain=0:2*pi,
+                y domain=0:pi,
+                samples=70, samples y=40
+            ] ({0.5*sin(deg(y))*cos(deg(x))},{sin(deg(y))*sin(deg(x))},{(1/sqrt(3))*cos(deg(y))});
+    \end{groupplot}
+\end{tikzpicture}
+\end{center}
+
 \vspace{1em}
 \hrulefill
 
@@ -110,6 +165,41 @@ Sketch the following curves.
 
 \medskip
 \solution
+
+\begin{center}
+\begin{tikzpicture}
+    \begin{groupplot}[
+        group style={group size=2 by 1, horizontal sep=2cm},
+        width=6.2cm, height=6.2cm,
+        axis lines=center,
+        axis line style={line width=0.9pt},
+        axis on top,
+        ticks=none,
+        xlabel={$x$}, ylabel={$y$},
+    ]
+        \nextgroupplot[
+            title={(a)\ $r(t) = \langle 1, 1 - 2t \rangle$},
+            xmin=0.6, xmax=1.4,
+            ymin=-1.4, ymax=1.4,
+        ]
+            \addplot[ultra thick, ->, >=stealth, color=blue]
+                coordinates {(1,1) (1,-1)};
+            \addplot[only marks, mark=*, mark size=2.5pt]
+                coordinates {(1,1) (1,-1)};
+            \node[anchor=west] at (axis cs:1,1) {$t = 0$};
+            \node[anchor=west] at (axis cs:1,-1) {$t = 1$};
+
+        \nextgroupplot[
+            title={(b)\ $x = y^{4} + 1$},
+            xmin=0.8, xmax=5.2,
+            ymin=-1.6, ymax=1.6,
+        ]
+            \addplot[smooth, ultra thick, color=orange, domain=-1.5:1.5, samples=320]
+                ({x^4 + 1},{x});
+            \addplot[only marks, mark=*, mark size=2.5pt] coordinates {(1,0)};
+    \end{groupplot}
+\end{tikzpicture}
+\end{center}
 
 \vspace{1em}
 \hrulefill
