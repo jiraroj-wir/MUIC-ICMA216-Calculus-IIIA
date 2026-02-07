@@ -153,6 +153,8 @@ Sketch the following surfaces.
 \end{tikzpicture}
 \end{center}
 
+\remark hand written plots for this problem were attached by submission.
+
 \vspace{1em}
 \hrulefill
 
@@ -211,6 +213,26 @@ Given $r(t) = (1 + t)i + t^2 j$. Find the unit tangent vector at the point where
 \medskip
 \solution
 
+we could find the velocity vector by 
+
+\[r'(t) = \frac{d}{dt}[(1 + t)i + t^{2}j] = i + 2tj\] 
+
+at $t = 1$ gives 
+
+\[r'(1) = i + 2j\] 
+
+which we could calculate it's magnitude as
+
+\[
+    \lVert r'(t) \rVert = \sqrt{1^{2} + 2^{2}} = \sqrt{5}.
+\]
+
+and therefore the unit tangent vector at $t = 1$ is
+
+\[
+    \frac{r'(1)}{\lVert r'(1) \rVert} = \boxed{\frac{1}{\sqrt{5}}(i + 2j)}
+\]
+
 \vspace{1em}
 \hrulefill
 
@@ -223,6 +245,30 @@ Evaluate the integral
 \medskip
 \solution
 
+we just integrate the vector componentwise as
+
+\begin{itemize}
+    \item{$i$-component}
+    \[
+    \int e^{t} \, dt = e^{t} + C_{1}$
+    \]
+
+    \item{$j$-component}
+    \[
+    \int 2t \, dt = t^{2} + C_{2}.
+    \]
+
+    \item{$k$-component} (integrate by parts)
+    \[
+    \int \ln t \, dt = t \ln t - t + C_{3}.
+    \]
+\end{itemize}
+
+merge the three components, combine their constants into a single constant vector C gives
+\[
+    \int (e^{t} i + 2t j + \ln t k) \, dt = \boxed{e^{t} i + t^{2} j + (t \ln t - t) k + \mathbf{C}}
+\]
+
 \vspace{1em}
 \hrulefill
 
@@ -231,6 +277,23 @@ Find $r(t)$ if $r'(t) = t^2 i + 4t^3 j - t^2 k$ and $r(0) = k$.
 
 \medskip
 \solution
+
+integrating $r^'(t)$ componentwise, just like the previous problem as
+
+\[
+    r(t) = \left(\int t^{2} \, dt\right) i + \left(\int 4t^{3} \, dt\right) j - \left(\int t^{2} \, dt\right) k + \mathbf{C} = \frac{t^{3}}{3} i + t^{4} j - \frac{t^{3}}{3} k + \mathbf{C},
+\]
+
+where $\mathbf{C}$ is a constant vector, then apply the initial condition $r(0) = k$
+\[
+    r(0) = 0i + 0j + 0k + \mathbf{C} = k.
+\]
+
+therefore, $\mathbf{C} = k$, and hence
+
+\[
+    \boxed{r(t) = \frac{t^{3}}{3} i + t^{4} j + \left(1 - \frac{t^{3}}{3}\right) k}
+\]
 
 \vspace{1em}
 \hrulefill
