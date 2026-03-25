@@ -1,0 +1,417 @@
+\documentclass{article}
+
+\usepackage{fancyhdr}
+\usepackage{amsmath}
+\allowdisplaybreaks
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{tikz}
+\usepackage[plain]{algorithm}
+\usepackage{algpseudocode}
+\usepackage{enumitem}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usepgfplotslibrary{groupplots}
+\usepackage{comment}
+
+\usetikzlibrary{automata,positioning}
+
+%
+% Basic Document Settings
+%
+
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in
+
+\linespread{1.1}
+
+\pagestyle{fancy}
+\lhead{\hmwkAuthorName}
+\chead{} % empty
+\rhead{\hmwkHeaderTitle}
+\cfoot{\thepage}
+
+\renewcommand\headrulewidth{0.4pt}
+\renewcommand\footrulewidth{0pt}
+
+\setlength\parindent{0pt}
+
+%
+% Homework Details
+%
+
+\newcommand{\hmwkTitle}{Homework 8}
+\newcommand{\hmwkDueDate}{Monday, March 2, 2026}
+\newcommand{\hmwkClass}{ICMA 216 Calculus IIIA}
+\newcommand{\hmwkClassTime}{Section 1}
+\newcommand{\hmwkClassInstructor}{Ruth J. Skulkhu}
+\newcommand{\hmwkAuthorName}{\textbf{Jiraroj Wiruchpongsanon (6781617)}}
+\newcommand{\hmwkHeaderTitle}{ICMA 216 Calculus IIIA: Homework 8}
+
+%
+% Title Page
+%
+
+\title{
+    \vspace{2in}
+    \textmd{\textbf{\hmwkClass:\ \hmwkTitle}}\\
+    \normalsize\vspace{0.1in}\small{Due\ on\ \hmwkDueDate}\\
+    \vspace{0.1in}\large{\textit{\hmwkClassInstructor\ \hmwkClassTime}}
+    \vspace{3in}
+}
+
+\author{\hmwkAuthorName}
+\date{}
+
+\renewcommand{\part}[1]{\textbf{\large Part \Alph{partCounter}}\stepcounter{partCounter}\\}
+
+%
+% Helper Commands
+%
+
+\newcounter{partCounter}
+\newcommand{\solution}{\textbf{\large Solution}}
+
+\newtheorem*{theorem}{Theorem}
+
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+
+\begin{document}
+
+\maketitle
+\newpage
+
+\section*{Problem 1 (13.5 The Chain Rule)}
+Let $z = x\sin(xy)$, and suppose that $x = e^{t^2}$, $y = 2t$. Use the chain rule to compute $\dfrac{dz}{dt}$.
+
+\medskip
+\solution
+
+\[
+    \frac{dz}{dt} = \frac{\partial z}{\partial x}\frac{dx}{dt} + \frac{\partial z}{\partial y}\frac{dy}{dt}
+\]
+
+for $z = x\sin(xy)$,
+\[
+    \frac{\partial z}{\partial x} = \sin(xy) + x\cos(xy)\frac{\partial}{\partial x}(xy)
+    = \sin(xy) + xy\cos(xy)
+\]
+
+and
+\[
+    \frac{\partial z}{\partial y} = x\cos(xy)\frac{\partial}{\partial y}(xy) = x^2\cos(xy)
+\]
+
+also,
+\[
+    \frac{dx}{dt} = 2te^{t^2}, \qquad \frac{dy}{dt} = 2
+\]
+
+therefore,
+\[
+    \frac{dz}{dt} = \left(\sin(xy) + xy\cos(xy)\right)(2te^{t^2}) + \left(x^2\cos(xy)\right)(2)
+\]
+
+substitute $x = e^{t^2}$ and $y = 2t$, so $xy = 2te^{t^2}$:
+\[
+    \frac{dz}{dt} = \left(\sin(2te^{t^2}) + 2te^{t^2}\cos(2te^{t^2})\right)(2te^{t^2}) + 2e^{2t^2}\cos(2te^{t^2})
+\]
+
+hence,
+\[
+    \boxed{\frac{dz}{dt} = 2te^{t^2}\sin(2te^{t^2}) + (4t^2+2)e^{2t^2}\cos(2te^{t^2})}
+\]
+
+\vspace{1em}
+\hrulefill
+
+\section*{Problem 2 (13.5 The Chain Rule)}
+Use the chain rule to find $\dfrac{\partial z}{\partial s}$ and $\dfrac{\partial z}{\partial t}$.
+\[
+    z = e^{xy}, \qquad x = s + 2t, \qquad y = \frac{s}{t}
+\]
+
+\medskip
+\solution
+
+\[
+    \frac{\partial z}{\partial s} = \frac{\partial z}{\partial x}\frac{\partial x}{\partial s} + \frac{\partial z}{\partial y}\frac{\partial y}{\partial s}
+\]
+
+for $z = e^{xy}$,
+\[
+    \frac{\partial z}{\partial x} = ye^{xy}, \qquad \frac{\partial z}{\partial y} = xe^{xy}
+\]
+
+and
+\[
+    \frac{\partial x}{\partial s} = 1, \qquad \frac{\partial y}{\partial s} = \frac{1}{t}
+\]
+
+thus,
+\[
+    \frac{\partial z}{\partial s} = ye^{xy}(1) + xe^{xy}\left(\frac{1}{t}\right)
+    = ye^{xy} + \frac{x}{t}e^{xy}
+\]
+
+substitute $x = s+2t$ and $y = \dfrac{s}{t}$:
+\[
+    \boxed{\frac{\partial z}{\partial s} = \frac{s}{t}e^{\frac{s(s+2t)}{t}} + \frac{s+2t}{t}e^{\frac{s(s+2t)}{t}}}
+\]
+
+and
+\[
+    \frac{\partial z}{\partial t} = \frac{\partial z}{\partial x}\frac{\partial x}{\partial t} + \frac{\partial z}{\partial y}\frac{\partial y}{\partial t}
+\]
+
+where
+\[
+    \frac{\partial x}{\partial t} = 2, \qquad \frac{\partial y}{\partial t} = -\frac{s}{t^2}
+\]
+
+so,
+\[
+    \frac{\partial z}{\partial t} = ye^{xy}(2) + xe^{xy}\left(-\frac{s}{t^2}\right)
+\]
+
+substitute again:
+\[
+    \boxed{\frac{\partial z}{\partial t} = \frac{2s}{t}e^{\frac{s(s+2t)}{t}} - \frac{s(s+2t)}{t^2}e^{\frac{s(s+2t)}{t}}}
+\]
+
+\vspace{1em}
+\hrulefill
+
+\section*{Problem 3 (13.5 The Chain Rule)}
+Use implicit differentiation to find $\dfrac{dy}{dx}$ of
+\[
+    \cos(x-y) = xe^y
+\]
+
+\medskip
+\solution
+
+let
+\[
+    f(x,y) = \cos(x-y) - xe^y = 0
+\]
+
+differentiate both side with respect to $x$:
+\[
+    \frac{d}{dx}\bigl(\cos(x-y)\bigr) - \frac{d}{dx}(xe^y) = 0
+\]
+
+for the first term,
+\[
+    \frac{d}{dx}\bigl(\cos(x-y)\bigr) = -\sin(x-y)\left(1-\frac{dy}{dx}\right)
+\]
+
+and for the second term,
+\[
+    \frac{d}{dx}(xe^y) = e^y + xe^y\frac{dy}{dx}
+\]
+
+thus,
+\[
+    -\sin(x-y)\left(1-\frac{dy}{dx}\right) - e^y - xe^y\frac{dy}{dx} = 0
+\]
+
+expand and collect the terms with $\dfrac{dy}{dx}$:
+\[
+    -\sin(x-y) + \sin(x-y)\frac{dy}{dx} - e^y - xe^y\frac{dy}{dx} = 0
+\]
+
+\[
+    \left(\sin(x-y) - xe^y\right)\frac{dy}{dx} = \sin(x-y) + e^y
+\]
+
+therefore,
+\[
+    \boxed{\frac{dy}{dx} = \frac{\sin(x-y)+e^y}{\sin(x-y)-xe^y}}
+\]
+
+\vspace{1em}
+\hrulefill
+
+\section*{Problem 4 (13.6 Directional Derivative and Gradient Vector)}
+Find the directional derivative of the function
+\[
+    f(x,y) = \ln(x^2+y^2)
+\]
+at the point $(2,1)$ in the direction of the vector $\mathbf{u} = \langle -1,2 \rangle$.
+
+\medskip
+\solution
+
+\[
+    D_{\hat{\mathbf{u}}}f(x,y) = \nabla f(x,y) \cdot \hat{\mathbf{u}}
+\]
+
+we find $\hat{\mathbf{u}}$ first:
+\[
+    \hat{\mathbf{u}} = \frac{\langle -1,2 \rangle}{\sqrt{(-1)^2+2^2}} = \left\langle -\frac{1}{\sqrt{5}}, \frac{2}{\sqrt{5}} \right\rangle
+\]
+
+next,
+\[
+    \nabla f(x,y) = \left\langle \frac{\partial f}{\partial x}, \frac{\partial f}{\partial y} \right\rangle
+    = \left\langle \frac{2x}{x^2+y^2}, \frac{2y}{x^2+y^2} \right\rangle
+\]
+
+therefore,
+\[
+    D_{\hat{\mathbf{u}}}f(x,y) = \left\langle \frac{2x}{x^2+y^2}, \frac{2y}{x^2+y^2} \right\rangle \cdot \left\langle -\frac{1}{\sqrt{5}}, \frac{2}{\sqrt{5}} \right\rangle
+\]
+
+\[
+    D_{\hat{\mathbf{u}}}f(x,y) = -\frac{2x}{\sqrt{5}(x^2+y^2)} + \frac{4y}{\sqrt{5}(x^2+y^2)}
+    = \frac{4y-2x}{\sqrt{5}(x^2+y^2)}
+\]
+
+at $(2,1)$,
+\[
+    D_{\hat{\mathbf{u}}}f(2,1) = \frac{4(1)-2(2)}{\sqrt{5}(2^2+1^2)} = \frac{0}{5\sqrt{5}} = 0
+\]
+
+hence,
+\[
+    \boxed{0}
+\]
+
+\vspace{1em}
+\hrulefill
+
+\section*{Problem 5 (13.6 Directional Derivative and Gradient Vector)}
+Find the maximum rate of change of $f(x,y) = \dfrac{y^2}{x}$ at the point $(2,4)$ and the direction in which it occurs.
+
+\medskip
+\solution
+
+\[
+    \left(D_{\hat{\mathbf{u}}}f(x,y)\right)_{\max} = \|\nabla f(x,y)\|
+\]
+
+we find
+\[
+    \nabla f(x,y) = \left\langle \frac{\partial f}{\partial x}, \frac{\partial f}{\partial y} \right\rangle
+    = \left\langle -\frac{y^2}{x^2}, \frac{2y}{x} \right\rangle
+\]
+
+so,
+\[
+    \|\nabla f(x,y)\| = \sqrt{\left(-\frac{y^2}{x^2}\right)^2 + \left(\frac{2y}{x}\right)^2}
+    = \sqrt{\frac{y^4}{x^4} + \frac{4y^2}{x^2}}
+\]
+
+thus at $(2,4)$,
+\[
+    \|\nabla f(2,4)\| = \sqrt{\frac{4^4}{2^4} + \frac{4(4)^2}{2^2}}
+    = \sqrt{16+16}
+    = \sqrt{32} = 4\sqrt{2}
+\]
+
+therefore the maximum rate of change is
+\[
+    \boxed{4\sqrt{2}}
+\]
+
+and it occurs in the direction of the gradient vector
+\[
+    \nabla f(2,4) = \left\langle -\frac{4^2}{2^2}, \frac{2(4)}{2} \right\rangle = \langle -4,4 \rangle
+\]
+
+so the unit direction is
+\[
+    \boxed{\left\langle -\frac{1}{\sqrt{2}}, \frac{1}{\sqrt{2}} \right\rangle}
+\]
+
+\vspace{1em}
+\hrulefill
+
+\section*{Problem 6 (13.6 Directional Derivative and Gradient Vector)}
+Find the directions in which the directional derivative of $f(x,y) = x^2 + \sin(xy)$ at the point $(1,0)$ has the value $1$.
+
+\medskip
+\solution
+
+we need $\hat{\mathbf{u}}$ such that
+\[
+    D_{\hat{\mathbf{u}}}f(1,0) = 1
+\]
+
+where
+\[
+    D_{\hat{\mathbf{u}}}f(x,y) = \nabla f(x,y)\cdot \hat{\mathbf{u}}
+\]
+
+first find the gradient:
+\[
+    \nabla f(x,y) = \left\langle 2x + y\cos(xy), x\cos(xy) \right\rangle
+\]
+
+so,
+\[
+    \nabla f(1,0) = \langle 2,1 \rangle
+\]
+
+let $\hat{\mathbf{u}} = \langle u_1,u_2 \rangle$. Then
+\[
+    \langle 2,1 \rangle \cdot \langle u_1,u_2 \rangle = 1
+\]
+
+which gives
+\[
+    2u_1 + u_2 = 1 \tag{1}
+\]
+
+and since $\hat{\mathbf{u}}$ is a unit vector,
+\[
+    u_1^2 + u_2^2 = 1 \tag{2}
+\]
+
+from (1),
+\[
+    u_2 = 1 - 2u_1
+\]
+
+substitute into (2):
+\[
+    u_1^2 + (1-2u_1)^2 = 1
+\]
+
+\[
+    u_1^2 + 1 - 4u_1 + 4u_1^2 = 1
+\]
+
+\[
+    5u_1^2 - 4u_1 = 0
+\]
+
+\[
+    u_1(5u_1-4)=0
+\]
+
+so,
+\[
+    u_1 = 0 \qquad \text{or} \qquad u_1 = \frac{4}{5}
+\]
+
+if $u_1=0$, then from (1), $u_2=1$.
+
+if $u_1=\dfrac{4}{5}$, then
+\[
+    u_2 = 1 - 2\left(\frac{4}{5}\right) = -\frac{3}{5}
+\]
+
+therefore the directions are
+\[
+    \boxed{\left\langle 0,1 \right\rangle \quad \text{and} \quad \left\langle \frac{4}{5}, -\frac{3}{5} \right\rangle}
+\]
+
+\end{document}
