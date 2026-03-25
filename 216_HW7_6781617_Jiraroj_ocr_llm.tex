@@ -1,0 +1,388 @@
+\documentclass{article}
+
+\usepackage{fancyhdr}
+\usepackage{amsmath}
+\allowdisplaybreaks
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{tikz}
+\usepackage[plain]{algorithm}
+\usepackage{algpseudocode}
+\usepackage{enumitem}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usepgfplotslibrary{groupplots}
+\usepackage{comment}
+
+\usetikzlibrary{automata,positioning}
+
+%
+% Basic Document Settings
+%
+
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in
+
+\linespread{1.1}
+
+\pagestyle{fancy}
+\lhead{\hmwkAuthorName}
+\chead{} % empty
+\rhead{\hmwkHeaderTitle}
+\cfoot{\thepage}
+
+\renewcommand\headrulewidth{0.4pt}
+\renewcommand\footrulewidth{0pt}
+
+\setlength\parindent{0pt}
+
+%
+% Homework Details
+%
+
+\newcommand{\hmwkTitle}{Homework 7}
+\newcommand{\hmwkDueDate}{Monday, February 23, 2026}
+\newcommand{\hmwkClass}{ICMA 216 Calculus IIIA}
+\newcommand{\hmwkClassTime}{Section 1}
+\newcommand{\hmwkClassInstructor}{Ruth J. Skulkhu}
+\newcommand{\hmwkAuthorName}{\textbf{Jiraroj Wiruchpongsanon (6781617)}}
+\newcommand{\hmwkHeaderTitle}{ICMA 216 Calculus IIIA: Homework 7}
+
+%
+% Title Page
+%
+
+\title{
+    \vspace{2in}
+    \textmd{\textbf{\hmwkClass:\ \hmwkTitle}}\\
+    \normalsize\vspace{0.1in}\small{Due\ on\ \hmwkDueDate}\\
+    \vspace{0.1in}\large{\textit{\hmwkClassInstructor\ \hmwkClassTime}}
+    \vspace{3in}
+}
+
+\author{\hmwkAuthorName}
+\date{}
+
+\renewcommand{\part}[1]{\textbf{\large Part \Alph{partCounter}}\stepcounter{partCounter}\\}
+
+%
+% Helper Commands
+%
+
+\newcounter{partCounter}
+\newcommand{\solution}{\textbf{\large Solution}}
+
+\newtheorem*{theorem}{Theorem}
+
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+
+\begin{document}
+
+\maketitle
+\newpage
+
+\section*{Problem 1 (13.3 Partial Derivatives)}
+Let $f(x, y) = xe^{-y} + 5y$.
+\begin{enumerate}[label=(\alph*)]
+    \item Compute $f_x$ and $f_y$.
+    \item Find the slope of the surface $z = f(x, y)$ in the $y$-direction at the point $(2, 5)$.
+\end{enumerate}
+
+\medskip
+\solution
+
+\begin{enumerate}[label=(\alph*)]
+    \item for $f_x$, treat $y$ as constant, so
+    \[
+        f_x = \frac{\partial}{\partial x}(xe^{-y} + 5y) = e^{-y}
+    \]
+
+    and for $f_y$, treat $x$ as a constant
+    \[
+        f_y = \frac{\partial}{\partial y}(xe^{-y} + 5y) = -xe^{-y} + 5
+    \]
+
+    therefore,
+    \[
+        \boxed{f_x = e^{-y}, \qquad f_y = -xe^{-y} + 5}
+    \]
+
+    \item slope in $y$-direction, we do $f_y(2,5)$
+    \[
+        f_y(2,5) = -(2)e^{-5} + 5
+    \]
+
+    so the slope of the surface in the $y$-direction at $(2,5)$ is
+    \[
+        \boxed{-2e^{-5} + 5}
+    \]
+\end{enumerate}
+
+\vspace{1em}
+\hrulefill
+
+\section*{Problem 2 (13.3 Partial Derivatives)}
+Find all the second partial derivatives of the function
+\begin{enumerate}[label=(\alph*)]
+    \item $f(x, y) = x^4 - 3x^2y^3$.
+    \item $f(x, y) = \ln(3x + 5y)$.
+\end{enumerate}
+
+\medskip
+\solution
+
+\begin{enumerate}[label=(\alph*)]
+    \item
+    \[
+        f_x = 4x^3 - 6xy^3, \qquad f_y = -9x^2y^2
+    \]
+
+    therefore
+    \[
+        f_{xx} = 12x^2 - 6y^3
+    \]
+    \[
+        f_{xy} = -18xy^2
+    \]
+    \[
+        f_{yx} = -18xy^2
+    \]
+    \[
+        f_{yy} = -18x^2y
+    \]
+
+    so,
+    \[
+        \boxed{
+        \begin{aligned}
+            f_{xx} &= 12x^2 - 6y^3, \\
+            f_{xy} &= -18xy^2, \\
+            f_{yx} &= -18xy^2, \\
+            f_{yy} &= -18x^2y
+        \end{aligned}}
+    \]
+
+    \item
+    \[
+        f_x = \frac{3}{3x+5y}, \qquad f_y = \frac{5}{3x+5y}
+    \]
+
+    now for
+    \[
+        f_{xx} = \frac{\partial}{\partial x}\left(\frac{3}{3x+5y}\right)
+    \]
+
+    let $u = 3x+5y \Rightarrow \frac{\partial u}{\partial x} = 3$
+
+    \[
+        3 \frac{\partial}{\partial x}(3x+5y)^{-1}
+        = 3 \frac{\partial}{\partial u}(u^{-1}) \cdot \frac{\partial u}{\partial x}
+    \]
+    \[
+        = 3(-1)u^{-2}\cdot 3 = \frac{-9}{(3x+5y)^2}
+    \]
+
+    and you do similar process with the other three, therefore
+    \[
+        \boxed{
+        \begin{aligned}
+            f_{xx} &= -\frac{9}{(3x+5y)^2}, \\
+            f_{xy} &= -\frac{15}{(3x+5y)^2}, \\
+            f_{yx} &= -\frac{15}{(3x+5y)^2}, \\
+            f_{yy} &= -\frac{25}{(3x+5y)^2}
+        \end{aligned}}
+    \]
+\end{enumerate}
+
+\vspace{1em}
+\hrulefill
+
+\section*{Problem 3 (13.3 Partial Derivatives)}
+If $z = f(x, y)$ with the relation $xy^2z^3 + x^3y^2z + 1 = x + y + z$. Find $\dfrac{\partial z}{\partial x}$ at $(1, 1, 1)$.
+
+\medskip
+\solution
+
+we differentiate both side with respect to $x$:
+\[
+    \frac{\partial}{\partial x}(xy^2z^3) + \frac{\partial}{\partial x}(x^3y^2z) + \frac{\partial}{\partial x}(1) = \frac{\partial}{\partial x}(x+y+z)
+\]
+
+do it term-by-term, first one
+\[
+    \frac{\partial}{\partial x}(xy^2z^3) = y^2 \frac{\partial}{\partial x}(xz^3)
+    = y^2\left(x(3z^2)\frac{\partial z}{\partial x} + z^3 \frac{\partial x}{\partial x}\right)
+\]
+\[
+    = y^2\left(3xz^2\frac{\partial z}{\partial x} + z^3\right)
+\]
+
+and
+\[
+    \frac{\partial}{\partial x}(x^3y^2z) = y^2 \frac{\partial}{\partial x}(x^3z)
+    = y^2\left(x^3 \frac{\partial z}{\partial x} + z \frac{\partial}{\partial x}(x^3)\right)
+\]
+\[
+    = y^2\left(x^3\frac{\partial z}{\partial x} + 3x^2z\right)
+\]
+
+lastly,
+\[
+    \frac{\partial}{\partial x}(x+y+z) = 1 + 0 + \frac{\partial z}{\partial x}
+\]
+
+therefore
+\[
+    y^2\left(3xz^2\frac{\partial z}{\partial x} + z^3\right)
+    +
+    y^2\left(x^3\frac{\partial z}{\partial x} + 3x^2z\right)
+    = 1 + \frac{\partial z}{\partial x}
+\]
+
+at $(x,y,z) = (1,1,1)$:
+\[
+    1\left(3(1)(1)^2\frac{\partial z}{\partial x} + 1\right)
+    +
+    1\left((1)^3\frac{\partial z}{\partial x} + 3(1)^2(1)\right)
+    = 1 + \frac{\partial z}{\partial x}
+\]
+
+\[
+    3\frac{\partial z}{\partial x} + 1 + \frac{\partial z}{\partial x} + 3
+    = 1 + \frac{\partial z}{\partial x}
+\]
+
+\[
+    4\frac{\partial z}{\partial x} + 4 = 1 + \frac{\partial z}{\partial x}
+\]
+
+\[
+    3\frac{\partial z}{\partial x} = -3
+\]
+
+\[
+    \boxed{\frac{\partial z}{\partial x} = -1}
+\]
+
+\vspace{1em}
+\hrulefill
+
+\section*{Problem 4 (13.4 Differentiability, Differentials, and Local Linearity)}
+Use the linearization of $f(x, y) = \sqrt{x + 2y}$ to approximate $f(3.01, 2.96)$.
+
+\medskip
+\solution
+
+we pick the base point at $(3,3)$, so
+
+\[
+    L(x,y) = f(3,3) + f_x(3,3)(x-3) + f_y(3,3)(y-3)
+\]
+
+solving each term:
+\[
+    f(3,3) = \sqrt{3 + 2(3)} = 3
+\]
+
+\[
+    f_x = \frac{1}{2\sqrt{x+2y}}
+    \quad \Rightarrow \quad
+    f_x(3,3) = \frac{1}{2\sqrt{3 + 2(3)}} = \frac{1}{6}
+\]
+
+\[
+    f_y = \frac{2}{2\sqrt{x+2y}} = \frac{1}{\sqrt{x+2y}}
+    \quad \Rightarrow \quad
+    f_y(3,3) = \frac{1}{\sqrt{3 + 2(3)}} = \frac{1}{3}
+\]
+
+therefore
+\[
+    L(x,y) = 3 + \frac{1}{6}(x-3) + \frac{1}{3}(y-3)
+\]
+
+\[
+    f(3.01,2.96) \approx L(3.01,2.96)
+\]
+
+\[
+    \approx 3 + \frac{1}{6}(3.01-3) + \frac{1}{3}(2.96-3)
+\]
+
+\[
+    \boxed{\approx 2.9883}
+\]
+
+\vspace{1em}
+\hrulefill
+
+\section*{Problem 5 (13.4 Differentiability, Differentials, and Local Linearity)}
+Find the differential of $z = y \cos(xy)$.
+
+\medskip
+\solution
+
+as
+\[
+    dz = \frac{\partial z}{\partial x}dx + \frac{\partial z}{\partial y}dy
+\]
+
+\[
+    \frac{\partial z}{\partial x}
+    = y(-\sin(xy))y
+    = -y^2\sin(xy)
+\]
+
+\[
+    \frac{\partial z}{\partial y}
+    = \cos(xy) + y[-\sin(xy)\cdot x]
+    = \cos(xy) - xy\sin(xy)
+\]
+
+therefore
+\[
+    \boxed{dz = -y^2\sin(xy)\,dx + \left(\cos(xy) - xy\sin(xy)\right)\,dy}
+\]
+
+\vspace{1em}
+\hrulefill
+
+\section*{Problem 6 (13.4 Differentiability, Differentials, and Local Linearity)}
+If $z = 5x^2 + y^2$ and $(x, y)$ changes from $(1, 2)$ to $(1.05, 2.1)$, find the value of $dz$.
+
+\medskip
+\solution
+
+find $dz$ first:
+\[
+    dz = \frac{\partial z}{\partial x}dx + \frac{\partial z}{\partial y}dy
+\]
+
+\[
+    dz = 10x\,dx + 2y\,dy
+\]
+
+\[
+    dx = 1.05 - 1 = 0.05, \qquad dy = 2.1 - 2 = 0.1
+\]
+
+at $(x,y) = (1,2)$
+\[
+    dz = 10(1)(1.05 - 1) + 2(2)(2.1 - 2)
+\]
+
+\[
+    = 10(0.05) + 4(0.1)
+\]
+
+\[
+    \boxed{dz = 0.9}
+\]
+
+\end{document}
